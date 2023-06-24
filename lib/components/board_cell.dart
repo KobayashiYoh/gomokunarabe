@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gomokunarabe/components/app_colors.dart';
 import 'package:gomokunarabe/models/cell_type.dart';
 
 class BoardCell extends StatelessWidget {
@@ -43,24 +44,10 @@ class BoardCell extends StatelessWidget {
         height: double.infinity,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: const Color(0xFFFDE2BB),
+          color: AppColors.cellBackground,
           borderRadius: BorderRadius.circular(1.0),
           image: DecorationImage(
             image: AssetImage(cellType.imagePath),
-          ),
-        ),
-        child: FittedBox(
-          child: Stack(
-            children: [
-              Container(),
-              Text(
-                index.toString(),
-                style: const TextStyle(
-                  fontSize: 12.0,
-                  color: Colors.green,
-                ),
-              ),
-            ],
           ),
         ),
       ),

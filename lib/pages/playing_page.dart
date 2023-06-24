@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gomokunarabe/components/app_colors.dart';
 import 'package:gomokunarabe/components/board_cell.dart';
 
 class PlayingPage extends StatelessWidget {
@@ -15,8 +16,8 @@ class PlayingPage extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: Container(
-            padding: EdgeInsets.all(deviceWidth / 18),
-            color: Colors.black,
+            padding: EdgeInsets.all(deviceWidth / 36),
+            color: AppColors.cellBackground,
             height: deviceWidth,
             child: Column(
               children: [
