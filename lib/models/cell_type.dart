@@ -35,7 +35,7 @@ extension CellTypeExtension on CellType {
       case (CellType.bottomRight):
         return ImagePaths.cellBottomRight;
       case (CellType.insideWithDot):
-        return ImagePaths.cellInside;
+        return ImagePaths.cellInsideWithDot;
     }
   }
 }

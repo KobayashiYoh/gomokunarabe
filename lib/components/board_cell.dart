@@ -31,6 +31,8 @@ class BoardCell extends StatelessWidget {
       return CellType.leftSide;
     } else if ((index - 14) % 15 == 0) {
       return CellType.rightSide;
+    } else if (index == 48 || index == 56 || index == 168 || index == 176) {
+      return CellType.insideWithDot;
     } else {
       return CellType.inside;
     }

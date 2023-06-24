@@ -8,4 +8,5 @@ class ImagePaths {
   static const String cellBottomLeft = 'assets/images/CellBottomLeft.png';
   static const String cellBottomSide = 'assets/images/CellBottomSide.png';
   static const String cellBottomRight = 'assets/images/CellBottomRight.png';
+  static const String cellInsideWithDot = 'assets/images/CellInsideWithDot.png';
 }
