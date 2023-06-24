@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:gomokunarabe/components/app_colors.dart';
+import 'package:gomokunarabe/components/stone.dart';
+import 'package:gomokunarabe/constants/app_colors.dart';
+import 'package:gomokunarabe/models/cell_status.dart';
 import 'package:gomokunarabe/models/cell_type.dart';
 
 class BoardCell extends StatelessWidget {
-  const BoardCell({Key? key, required this.index}) : super(key: key);
+  const BoardCell({
+    Key? key,
+    required this.onTap,
+    required this.index,
+    required this.status,
+  }) : super(key: key);
+  final void Function()? onTap;
   final int index;
+  final CellStatus status;
 
   final minIndex = 0;
   final maxIndex = 224;
@@ -41,7 +50,7 @@ class BoardCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         height: double.infinity,
         alignment: Alignment.center,
@@ -52,6 +61,7 @@ class BoardCell extends StatelessWidget {
             image: AssetImage(cellType.imagePath),
           ),
         ),
+        child: Stone(status: status),
       ),
     );
   }
