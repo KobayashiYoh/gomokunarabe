@@ -25,25 +25,38 @@ class PlayingNotifier extends StateNotifier<PlayingState> {
   void _judgeGameResult() {
     const int kDefaultContinueCount = 1;
     int continueCount = kDefaultContinueCount;
-    for (int i = 0; i < 15; i++) {
+    bool isGameOver = false;
+    List<int> directions = [1, 15];
+    for (int direction in directions) {
       for (int j = 0; j < 15; j++) {
-        final int index = i * 15 + j;
-        final CellStatus status = state.cellStatuses[index];
-        if (index >= 225 - 1) {
-          break;
+        for (int k = 0; k < 15; k++) {
+          int index = 0;
+          if (direction == 1) {
+            index = j * 15 + k;
+          } else if (direction == 15) {
+            index = k * 15 + j;
+          }
+          final CellStatus status = state.cellStatuses[index];
+          if (index >= 225 - direction) {
+            break;
+          }
+          final int nextIndex = index + direction;
+          final CellStatus nextStatus = state.cellStatuses[nextIndex];
+          if (status.isNotEmpty && status == nextStatus) {
+            continueCount++;
+          } else {
+            continueCount = kDefaultContinueCount;
+          }
+          if (continueCount >= 5) {
+            isGameOver = true;
+            break;
+          }
         }
-        final int nextIndex = index + 1;
-        final CellStatus nextStatus = state.cellStatuses[nextIndex];
-        if (status.isNotEmpty && status == nextStatus) {
-          continueCount++;
-        } else {
-          continueCount = kDefaultContinueCount;
-        }
-        if (continueCount >= 5) {
+        if (isGameOver) {
           break;
         }
       }
-      if (continueCount >= 5) {
+      if (isGameOver) {
         print('ゲーム終了');
         break;
       }
