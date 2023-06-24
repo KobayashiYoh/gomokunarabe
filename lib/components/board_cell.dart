@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gomokunarabe/components/app_colors.dart';
+import 'package:gomokunarabe/components/stone.dart';
+import 'package:gomokunarabe/constants/app_colors.dart';
 import 'package:gomokunarabe/models/cell_status.dart';
 import 'package:gomokunarabe/models/cell_type.dart';
 
@@ -60,7 +61,7 @@ class BoardCell extends StatelessWidget {
             image: AssetImage(cellType.imagePath),
           ),
         ),
-        child: Text(status.text),
+        child: Stone(status: status),
       ),
     );
   }

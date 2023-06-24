@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gomokunarabe/components/app_colors.dart';
 import 'package:gomokunarabe/components/board_cell.dart';
+import 'package:gomokunarabe/constants/app_colors.dart';
 import 'package:gomokunarabe/providers/playing_notifier.dart';
 
 class BoardView extends ConsumerWidget {
