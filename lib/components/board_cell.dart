@@ -61,7 +61,21 @@ class BoardCell extends StatelessWidget {
             image: AssetImage(cellType.imagePath),
           ),
         ),
-        child: Stone(status: status),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Stone(status: status),
+            FittedBox(
+              child: Text(
+                index.toString(),
+                style: const TextStyle(
+                  color: Colors.green,
+                  fontSize: 20.0,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

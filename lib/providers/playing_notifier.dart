@@ -22,6 +22,34 @@ class PlayingNotifier extends StateNotifier<PlayingState> {
     _setIsBlackTurn(!state.isBlackTurn);
   }
 
+  void _judgeGameResult() {
+    const int kDefaultContinueCount = 1;
+    int continueCount = kDefaultContinueCount;
+    for (int i = 0; i < 15; i++) {
+      for (int j = 0; j < 15; j++) {
+        final int index = i * 15 + j;
+        final CellStatus status = state.cellStatuses[index];
+        if (index >= 225 - 1) {
+          break;
+        }
+        final int nextIndex = index + 1;
+        final CellStatus nextStatus = state.cellStatuses[nextIndex];
+        if (status.isNotEmpty && status == nextStatus) {
+          continueCount++;
+        } else {
+          continueCount = kDefaultContinueCount;
+        }
+        if (continueCount >= 5) {
+          break;
+        }
+      }
+      if (continueCount >= 5) {
+        print('ゲーム終了');
+        break;
+      }
+    }
+  }
+
   void onTapCell(int index) {
     if (state.cellStatuses[index].isNotEmpty) {
       return;
@@ -30,6 +58,7 @@ class PlayingNotifier extends StateNotifier<PlayingState> {
     newStatuses[index] =
         state.isBlackTurn ? CellStatus.black : CellStatus.white;
     _setCellStatuses(newStatuses);
+    _judgeGameResult();
     _switchTurn();
   }
 }
