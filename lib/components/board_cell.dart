@@ -60,7 +60,7 @@ class BoardCell extends StatelessWidget {
             image: AssetImage(cellType.imagePath),
           ),
         ),
-        child: Text(status == CellStatus.black ? '●' : ''),
+        child: Text(status.text),
       ),
     );
   }

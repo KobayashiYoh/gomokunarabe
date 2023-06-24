@@ -10,12 +10,26 @@ final playingProvider =
 class PlayingNotifier extends StateNotifier<PlayingState> {
   PlayingNotifier() : super(kDefaultPlayingState);
 
+  void _setCellStatuses(List<CellStatus> value) {
+    state = state.copyWith(cellStatuses: value);
+  }
+
+  void _setIsBlackTurn(bool value) {
+    state = state.copyWith(isBlackTurn: value);
+  }
+
+  void _switchTurn() {
+    _setIsBlackTurn(!state.isBlackTurn);
+  }
+
   void onTapCell(int index) {
+    if (state.cellStatuses[index].isNotEmpty) {
+      return;
+    }
     List<CellStatus> newStatuses = List.from(state.cellStatuses);
     newStatuses[index] =
         state.isBlackTurn ? CellStatus.black : CellStatus.white;
-    state = state.copyWith(
-      cellStatuses: newStatuses,
-    );
+    _setCellStatuses(newStatuses);
+    _switchTurn();
   }
 }
