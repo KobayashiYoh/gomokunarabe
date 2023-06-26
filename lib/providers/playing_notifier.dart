@@ -38,10 +38,8 @@ class PlayingNotifier extends StateNotifier<PlayingState> {
     final cellStatuses = state.cellStatuses;
     final List<int> directions = [1, 17, 18, 18, 16, 16];
     final List<int> defaultRowIndex = [18, 18, 18, 35, 18, 32];
-    final List<int> rowAdds = [17, 17, 1, 17, 1, 17];
-    for (int dirIndex = directions.first;
-        dirIndex < directions.length;
-        dirIndex++) {
+    final List<int> rowAdds = [17, 1, 1, 17, 1, 17];
+    for (int dirIndex = 0; dirIndex < directions.length; dirIndex++) {
       final int direction = directions[dirIndex];
       for (int rowIndex = defaultRowIndex[dirIndex];
           cellStatuses[rowIndex].isNotWall;
