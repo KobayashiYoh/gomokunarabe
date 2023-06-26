@@ -22,6 +22,15 @@ class PlayingNotifier extends StateNotifier<PlayingState> {
     _setIsBlackTurn(!state.isBlackTurn);
   }
 
+  void _gameSet() {
+    print('ゲーム終了');
+    if (state.isBlackTurn) {
+      print('黒の勝利！');
+    } else {
+      print('白の勝利！');
+    }
+  }
+
   void _judgeGameResult() {
     const int kDefaultContinueCount = 1;
     int continueCount = kDefaultContinueCount;
@@ -61,7 +70,7 @@ class PlayingNotifier extends StateNotifier<PlayingState> {
         }
       }
       if (isGameOver) {
-        print('ゲーム終了');
+        _gameSet();
         break;
       }
     }

@@ -42,8 +42,9 @@ class BoardCell extends StatelessWidget {
               child: Text(
                 index.toString(),
                 style: const TextStyle(
-                  color: Colors.green,
+                  color: Colors.blue,
                   fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
