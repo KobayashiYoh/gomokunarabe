@@ -7,7 +7,7 @@ class Stone extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (status.isEmpty) {
+    if (status.isEmpty || status.isWall) {
       return const SizedBox.shrink();
     }
     return Container(

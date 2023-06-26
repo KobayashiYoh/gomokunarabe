@@ -8,7 +8,7 @@ class BoardView extends ConsumerWidget {
   const BoardView({Key? key}) : super(key: key);
 
   int cellIndex(int i, int j) {
-    return i * kBoardLength + j;
+    return i * 17 + j;
   }
 
   @override
@@ -17,16 +17,16 @@ class BoardView extends ConsumerWidget {
     final playingNotifier = ref.read(playingProvider.notifier);
     final double deviceWidth = MediaQuery.of(context).size.width;
     return Container(
-      padding: EdgeInsets.all(deviceWidth / 36),
+      // padding: EdgeInsets.all(deviceWidth / 36),
       color: AppColors.cellBackground,
       height: deviceWidth,
       child: Column(
         children: [
-          for (int i = 0; i < kBoardLength; i++)
+          for (int i = 0; i < 17; i++)
             Expanded(
               child: Row(
                 children: [
-                  for (int j = 0; j < kBoardLength; j++)
+                  for (int j = 0; j < 17; j++)
                     Expanded(
                       child: BoardCell(
                         onTap: () => playingNotifier.onTapCell(cellIndex(i, j)),
@@ -43,4 +43,4 @@ class BoardView extends ConsumerWidget {
   }
 }
 
-const int kBoardLength = 15;
+const int kBoardLength = 17;

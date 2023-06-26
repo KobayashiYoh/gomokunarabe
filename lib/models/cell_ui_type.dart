@@ -1,4 +1,6 @@
+import 'package:gomokunarabe/constants/cell_index.dart';
 import 'package:gomokunarabe/constants/image_paths.dart';
+import 'package:gomokunarabe/extensions/cell_index_extension.dart';
 
 enum CellUIType {
   topLeft,
@@ -40,5 +42,35 @@ extension CellUITypeExtension on CellUIType {
       case (CellUIType.none):
         return '';
     }
+  }
+}
+
+CellUIType indexToCellUIType(int index) {
+  if (index.isErrorCellIndex) {
+    throw ArgumentError(
+      'Invalid index value. Please provide a value between ${CellIndex.minIndex} and ${CellIndex.maxIndex}.',
+    );
+  } else if (index.isWallIndex) {
+    return CellUIType.none;
+  } else if (index.isTopLeftCellIndex) {
+    return CellUIType.topLeft;
+  } else if (index.isTopRightCellIndex) {
+    return CellUIType.topRight;
+  } else if (index.isBottomLeftCellIndex) {
+    return CellUIType.bottomLeft;
+  } else if (index.isBottomRightCellIndex) {
+    return CellUIType.bottomRight;
+  } else if (index.isTopSideCellIndex) {
+    return CellUIType.topSide;
+  } else if (index.isBottomSideCellIndex) {
+    return CellUIType.bottomSide;
+  } else if (index.isLeftSideCellIndex) {
+    return CellUIType.leftSide;
+  } else if (index.isRightSideCellIndex) {
+    return CellUIType.rightSide;
+  } else if (index.isInsideWithDotCellIndex) {
+    return CellUIType.insideWithDot;
+  } else {
+    return CellUIType.inside;
   }
 }
