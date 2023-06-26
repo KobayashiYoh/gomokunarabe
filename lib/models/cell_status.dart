@@ -11,4 +11,5 @@ extension CellStatusExtension on CellStatus {
   bool get isEmpty => this == CellStatus.empty;
   bool get isWall => this == CellStatus.wall;
   bool get isNotEmpty => !isEmpty;
+  bool get isNotWall => !isWall;
 }

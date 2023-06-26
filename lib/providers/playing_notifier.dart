@@ -26,22 +26,26 @@ class PlayingNotifier extends StateNotifier<PlayingState> {
     const int kDefaultContinueCount = 1;
     int continueCount = kDefaultContinueCount;
     bool isGameOver = false;
-    List<int> directions = [1, 15];
-    for (int direction in directions) {
-      for (int j = 0; j < 15; j++) {
-        for (int k = 0; k < 15; k++) {
-          int index = 0;
-          if (direction == 1) {
-            index = j * 15 + k;
-          } else if (direction == 15) {
-            index = k * 15 + j;
-          }
-          final CellStatus status = state.cellStatuses[index];
-          if (index >= 225 - direction) {
+    final cellStatuses = state.cellStatuses;
+    final List<int> directions = [1, 17, 18, 18, 16, 16];
+    final List<int> defaultRowIndex = [18, 18, 18, 35, 18, 32];
+    final List<int> rowAdds = [17, 17, 1, 17, 1, 17];
+    for (int dirIndex = directions.first;
+        dirIndex < directions.length;
+        dirIndex++) {
+      final int direction = directions[dirIndex];
+      for (int rowIndex = defaultRowIndex[dirIndex];
+          cellStatuses[rowIndex].isNotWall;
+          rowIndex += rowAdds[dirIndex]) {
+        for (int index = rowIndex;
+            cellStatuses[index].isNotWall;
+            index += direction) {
+          if (index >= 288 - direction) {
             break;
           }
           final int nextIndex = index + direction;
-          final CellStatus nextStatus = state.cellStatuses[nextIndex];
+          final CellStatus status = cellStatuses[index];
+          final CellStatus nextStatus = cellStatuses[nextIndex];
           if (status.isNotEmpty && status == nextStatus) {
             continueCount++;
           } else {
