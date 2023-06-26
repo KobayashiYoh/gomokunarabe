@@ -1,6 +1,6 @@
 import 'package:gomokunarabe/constants/image_paths.dart';
 
-enum CellType {
+enum CellUIType {
   topLeft,
   topSide,
   topRight,
@@ -11,31 +11,34 @@ enum CellType {
   bottomSide,
   bottomRight,
   insideWithDot,
+  none,
 }
 
-extension CellTypeExtension on CellType {
-  String get imagePath {
+extension CellUITypeExtension on CellUIType {
+  String get backgroundImagePath {
     switch (this) {
-      case (CellType.topLeft):
+      case (CellUIType.topLeft):
         return ImagePaths.cellTopLeft;
-      case (CellType.topSide):
+      case (CellUIType.topSide):
         return ImagePaths.cellTopSide;
-      case (CellType.topRight):
+      case (CellUIType.topRight):
         return ImagePaths.cellTopRight;
-      case (CellType.leftSide):
+      case (CellUIType.leftSide):
         return ImagePaths.cellLeftSide;
-      case (CellType.inside):
+      case (CellUIType.inside):
         return ImagePaths.cellInside;
-      case (CellType.rightSide):
+      case (CellUIType.rightSide):
         return ImagePaths.cellRightSide;
-      case (CellType.bottomLeft):
+      case (CellUIType.bottomLeft):
         return ImagePaths.cellBottomLeft;
-      case (CellType.bottomSide):
+      case (CellUIType.bottomSide):
         return ImagePaths.cellBottomSide;
-      case (CellType.bottomRight):
+      case (CellUIType.bottomRight):
         return ImagePaths.cellBottomRight;
-      case (CellType.insideWithDot):
+      case (CellUIType.insideWithDot):
         return ImagePaths.cellInsideWithDot;
+      case (CellUIType.none):
+        return '';
     }
   }
 }
