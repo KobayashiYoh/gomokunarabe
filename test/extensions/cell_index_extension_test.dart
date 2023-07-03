@@ -10,6 +10,13 @@ void main() {
       expect(289.isErrorCellIndex, true);
     });
 
+    test('isNotErrorCellIndex', () {
+      expect((-1).isNotErrorCellIndex, false);
+      expect(0.isNotErrorCellIndex, true);
+      expect(288.isNotErrorCellIndex, true);
+      expect(289.isNotErrorCellIndex, false);
+    });
+
     test('isWallIndex', () {
       expect((-1).isWallIndex, false);
       expect(0.isWallIndex, true);
@@ -26,6 +33,24 @@ void main() {
       expect(273.isWallIndex, true);
       expect(288.isWallIndex, true);
       expect(289.isWallIndex, false);
+    });
+
+    test('isNotWallIndex', () {
+      expect((-1).isNotWallIndex, true);
+      expect(0.isNotWallIndex, false);
+      expect(16.isNotWallIndex, false);
+      expect(17.isNotWallIndex, false);
+      expect(18.isNotWallIndex, true);
+      expect(32.isNotWallIndex, true);
+      expect(33.isNotWallIndex, false);
+      expect(255.isNotWallIndex, false);
+      expect(256.isNotWallIndex, true);
+      expect(270.isNotWallIndex, true);
+      expect(271.isNotWallIndex, false);
+      expect(272.isNotWallIndex, false);
+      expect(273.isNotWallIndex, false);
+      expect(288.isNotWallIndex, false);
+      expect(289.isNotWallIndex, true);
     });
 
     test('isTopLeftCellIndex', () {
