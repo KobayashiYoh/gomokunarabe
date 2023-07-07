@@ -26,11 +26,11 @@ class BoardView extends ConsumerWidget {
       height: boardLength,
       child: Column(
         children: [
-          for (int i = 1; i <= 15; i++)
+          for (int i = 0; i <= 16; i++)
             Expanded(
               child: Row(
                 children: [
-                  for (int j = 1; j <= 15; j++)
+                  for (int j = 0; j <= 16; j++)
                     Expanded(
                       child: BoardCell(
                         onTap: () => playingNotifier.onTapCell(cellIndex(i, j)),
