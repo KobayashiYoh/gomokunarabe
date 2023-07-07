@@ -23,11 +23,11 @@ class PlayingNotifier extends StateNotifier<PlayingState> {
   }
 
   void _gameSet() {
-    print('ゲーム終了');
+    // print('ゲーム終了');
     if (state.isBlackTurn) {
-      print('黒の勝利！');
+      // print('黒の勝利！');
     } else {
-      print('白の勝利！');
+      // print('白の勝利！');
     }
   }
 
